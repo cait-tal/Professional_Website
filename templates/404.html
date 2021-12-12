@@ -1,10 +1,10 @@
-{% extends "index.html" %}
-{% block title %}Page Not Found{% endblock %}
+{% extends "main_base.html" %}
+{% block title %}<title>Page Not Found</title>{% endblock %}
 {% block content %}
-<div class="jumbotron text-center top-container">
-    <p>404</p>
-    <h1 class="error">🐇</h1>
-    <p>Oops, looks like you've fallen down a rabbit hole...</p>
-    <p><a href="{{url_for('home_page')}}">Return to the surface!</a></p>
+<div class="jumbotron text-center soft-color">
+    <h2 class="error header">404</h2>
+    <h1 class="error img">🐇</h1>
+    <h2 class="error header">Oops, looks like you've fallen down a rabbit hole...</h2>
+    <h3><a href="{{url_for('home_page')}}">Return to the surface!</a></h3>
 </div>
 {% endblock %}

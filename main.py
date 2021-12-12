@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for
+from flask_bootstrap import Bootstrap
 from datetime import datetime
 
 app = Flask(__name__)
+Bootstrap(app)
 
 CURRENT_YEAR = datetime.now().year
 @app.route("/")
@@ -14,7 +16,7 @@ def home_page():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('404.html', year=CURRENT_YEAR), 404
 
 if __name__ == "__main__":
     app.run(debug=True)

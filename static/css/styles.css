@@ -1,10 +1,37 @@
 body {
-    background-color: #F1F1F1;
-    color: #40A798;
+    /* font-family: 'Courgette', cursive;
+    font-family: 'Roboto', sans-serif; */
+    font-family: 'Source Sans Pro', sans-serif;
+
 }
-.error {
+h1, h2, h3, h4 {
+    font-family: "Roboto", sans-serif;
+}
+/* Error 404 Page */
+.error .header {
+    font-size: 2rem;
+}
+.error .img {
     font-size: 3rem;
 }
-.top-container {
-    background-color: #F1F1F1;
+.nav-item {
+    text-align: right;
+}
+.navbar-light .navbar-brand, .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link:hover {
+    color: #40A798;
+}
+.navbar-img {
+    width: 40px;
+    height: 40px;
+}
+/* Pink Sections */
+.soft-color {
+    background-color: #F5E1DA;
+    color: #40A798;
+}
+/* Footer Section */
+.footer-icon {
+	margin: 20px 20px;
+	width: 20px;
+	height: 20px;
 }
