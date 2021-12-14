@@ -11,15 +11,15 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 Bootstrap(app)
 ckeditor = CKEditor(app)
 
 
 # Database run locally with sqlite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
 # Use PostgreSQL for deployment
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///projects.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///projects.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -54,7 +54,7 @@ class ContactForm(FlaskForm):
 CURRENT_YEAR = datetime.now().year
 
 # Email info for contact page
-EMAIL_PARAMS = {"from_address": os.getenv("YAHOO_EMAIL"), "app_password": os.getenv("APP_PASSWORD"),"to_address": os.getenv("GMAIL_EMAIL")}
+EMAIL_PARAMS = {"from_address": os.environ.get("YAHOO_EMAIL"), "app_password": os.environ.get("APP_PASSWORD"),"to_address": os.environ.get("GMAIL_EMAIL")}
 # Database structure
 
 @app.route("/")
@@ -111,4 +111,4 @@ def add_project():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
