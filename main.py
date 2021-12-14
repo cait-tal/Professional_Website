@@ -17,9 +17,9 @@ ckeditor = CKEditor(app)
 
 
 # Database run locally with sqlite
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
 # Use PostgreSQL for deployment
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///projects.db")
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///projects.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -33,7 +33,7 @@ class Project(db.Model):
     body = db.Column(db.Text, nullable=False)
     img_path = db.Column(db.String(250), unique=True, nullable=False)
 
-# db.create_all()
+db.create_all()
 
 # New Project Form
 class ProjectForm(FlaskForm):
