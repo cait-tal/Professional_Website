@@ -1,0 +1,32 @@
+{% extends 'main_base.html' %}
+{% block title %}
+<title>Projects| CT</title>
+{% endblock %}
+{% block content %}
+{% for project in projects %}
+<section id="projects">
+{% if project.id % 2==0 %}
+<div class="container-fluid soft-color">
+{% else %}
+    <div class="container-fluid off-white">
+{% endif %}
+    <div class="row project-body">
+        <div class="col-lg-6 justify-content-center">
+            <h3 class="project-heading">{{project.title}}</h3>
+            <div class="text-center">
+            <a href="{{project.github_url}}" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename=project.img_path)}}" alt="{{project.title}}-img" class="image"></a>
+
+            </div>
+            </div>
+        <div class="col-lg-6 project-text">
+            <br>
+            <br>
+            <br>
+            {{project.body|safe}}
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+</section>
+{% endblock %}

@@ -54,7 +54,7 @@ h1, h2, h3, h4 {
 
 /* About Section */
 .about {
-    margin: 40px 40px;
+    padding: 40px 40px;
 }
 .self-img {
     max-width: 400px;
@@ -90,6 +90,35 @@ h1, h2, h3, h4 {
 .skill-column {
     padding-right: 15%;
 }
+.skill-column h4 {
+    margin-top: 20px;
+}
+.resume-button {
+	background:linear-gradient(to bottom, #40a798 5%, #476269 100%);
+	background-color:#40a798;
+	border-radius:42px;
+	border:5px solid #3d7d73;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:22px;
+	padding:23px 29px;
+	text-decoration:none;
+	text-shadow:-1px 10px 16px #2b3347;
+}
+.resume-button:hover {
+	background:linear-gradient(to bottom, #476269 5%, #40a798 100%);
+	background-color:#476269;
+	text-decoration:none;
+}
+.resume-button:active {
+	position:relative;
+	top:1px;
+}
+.button-container {
+    padding: 30px;
+}
 
 /* Footer Section */
 .footer-icon {
@@ -97,11 +126,48 @@ h1, h2, h3, h4 {
 	width: 20px;
 	height: 20px;
 }
+#footer p {
+    margin-bottom: 0;
+    padding: 1.25rem;
+}
+.contact-button {
+	background-color:#40a798;
+	border-radius:16px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:14px;
+	padding:9px 19px;
+	text-decoration:none;
+	text-shadow:-1px 10px 16px #2b3347;
+}
+.contact-button:hover {
+	background-color:#476269;
+	text-decoration:none;
+}
+.contact-button:active {
+	position:relative;
+	top:1px;
+}
 /* Media Queries */
-@media (max-width: 900px) {
-    .skill-column {
-    padding-right: 25%;
+@media (max-width: 990px) {
+    .skill-column h4 {
+    text-align: center;
     }
     .project-text p{
     font-size: 1rem;}
+}
+/* Project Page */
+.project-body {
+    margin-right: 0px;
+    padding-right: 15px;
+}
+.project-text {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/* Contact Page */
+.contact-form {
+    padding: 30px;
 }

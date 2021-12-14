@@ -1,0 +1,78 @@
+{% extends "main_base.html" %}
+{% block title %}
+<title>Welcome| CT</title>
+{% endblock %}
+
+{% block top_title %}
+    <div class="text-center title">
+        <img src="{{url_for('static', filename='images/logo_img.png')}}" alt="logo-img" class="image title-img">
+    </div>
+{% endblock %}
+{% block content %}
+<section class="off-white" id="about-me">
+    <div class="container-fluid">
+    <div class="row about">
+        <div class="col-lg-6">
+            <h2 class="text-center">About Me</h2><br>
+            <p class="mr-auto">As a graduate of English Literature, the written language has always held a special place in my heart. The many ways words connect and interact to communicate the myriads of ideas flowing through the mind is truly mind-boggling.<br><br>
+                In order to apply some of these ideas, I decided to take up programming and learn a different style of writing--one a computer could understand. After studying the syntax and grammar of Python, I found myself completely enamored with the thought of taking an idea and using code to communicate to the computer, allowing ideas to take real shape and form. I am excited to continue creating applications and projects others can use to navigate this technology rich world.<br><br>
+                When I am not nose deep in a book or a hundred lines of code, you might find me playing with my cats or working on a new model kit.</p>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="{{url_for('static', filename='images/self.jpg')}}" alt="self-img" class="image self-img" width="400" height="400">
+        </div>
+    </div>
+    </div>
+</section>
+<section class="soft-pink" id="projects">
+<div id="projects-carousel" class="carousel slide" data-interval="false" data-ride="carousel">
+  <div class="carousel-inner">
+      {% for project in projects %}
+      {% if project.id == 1 %}
+    <div class="carousel-item active">
+      {% else %}
+    <div class="carousel-item">
+      {% endif %}
+      <h3 class="project-heading">{{project.title}}</h3>
+        <a href="{{project.github_url}}" target="_blank" rel="noopener noreferrer"><img class="d-block w-100 image" src="{{url_for('static', filename=project.img_path)}}" alt="{{project.title}}-img"></a>
+        <span class="project-text">{{project.body|safe}}</span>
+    </div>
+      {% endfor %}
+    <div class="carousel-item">
+        <h3 class="project-heading">All projects</h3>
+        <a href="{{url_for('project_page')}}"><img class="d-block w-100 image" src="{{url_for('static', filename='images/more_projects.jpg')}}" alt="more-projects-img"></a>
+        <span class="project-text"><p>Click image to see a list of all current projects.</p></span>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#projects-carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#projects-carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+</section>
+<section id="skills" class="off-white">
+    <div class="container-fluid">
+        <h2 class="text-center">Skills</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 skill-column text-right">
+                <h4>Python 🔵 🔵 🔵 🔵 ⚪</h4>
+                <h4>HTML/CSS 🔵 🔵 🔵 ⚪ ⚪</h4>
+                <h4>JavaScript 🔵 🔵 ⚪ ⚪ ⚪</h4>
+            </div>
+            <div class="col-lg-6 skill-column text-right">
+                <h4>Microsoft Office 🔵 🔵 🔵 🔵 🔵</h4>
+                <h4>Editing 🔵 🔵 🔵 🔵 ⚪</h4>
+                <h4>Teamwork 🔵 🔵 🔵 🔵 🔵</h4>
+            </div>
+        </div>
+        <div class="text-center button-container">
+        <a href="{{url_for('static', filename='images/Resume 2021_Styled.pdf')}}" target="_blank" rel="noopener noreferrer" class="resume-button">My Resume</a>
+    </div>
+    </div>
+</section>
+{% endblock %}
