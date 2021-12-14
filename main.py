@@ -6,7 +6,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Email
 from wtforms.fields.html5 import EmailField
 from flask_ckeditor import CKEditor, CKEditorField
-import smtplib, ssl
+import smtplib
 from datetime import datetime
 import os
 
@@ -16,10 +16,14 @@ Bootstrap(app)
 ckeditor = CKEditor(app)
 
 
-# Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
+# Database run locally with sqlite
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
+# Use PostgreSQL for deployment
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///projects.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+ADD_PROJECT = os.getenv("PROJECT_URL")
 
 # Database Table
 class Project(db.Model):
@@ -89,22 +93,22 @@ def contact_page():
 def page_not_found(e):
     return render_template('404.html', year=CURRENT_YEAR), 404
 
-# @app.route("/new_project", methods=["POST", "GET"])
-# def add_project():
-#     if request.method == "POST":
-#         new_project = Project(
-#             title=request.form.get("title"),
-#             github_url = request.form.get("github_url"),
-#             body=request.form.get("body"),
-#             img_path=request.form.get("img_path"),
-#         )
-#         db.session.add(new_project)
-#         db.session.commit()
-#         return redirect(url_for('add_project'))
-#     else:
-#         form = ProjectForm()
-#         return render_template("new_project.html", form=form, is_edit=False)
-#
+@app.route(f"/{ADD_PROJECT}", methods=["POST", "GET"])
+def add_project():
+    if request.method == "POST":
+        new_project = Project(
+            title=request.form.get("title"),
+            github_url = request.form.get("github_url"),
+            body=request.form.get("body"),
+            img_path=request.form.get("img_path"),
+        )
+        db.session.add(new_project)
+        db.session.commit()
+        return redirect(url_for('add_project'))
+    else:
+        form = ProjectForm()
+        return render_template("new_project.html", form=form, is_edit=False)
+
 
 if __name__ == "__main__":
     app.run(debug=False)
