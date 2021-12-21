@@ -35,14 +35,14 @@
       {% endif %}
       <h3 class="project-heading">{{project.title}}</h3>
         <a href="{{project.github_url}}" target="_blank" rel="noopener noreferrer"><img class="d-block w-100 image" src="{{url_for('static', filename=project.img_path)}}" alt="{{project.title}}-img"></a>
-        <span class="project-text">{{project.body|safe}}</span>
+        <div class="project-text">{{project.body|safe}}</div>
     </div>
       {% endfor %}
     <div class="carousel-item">
         <h3 class="project-heading">All projects</h3>
         <a href="{{url_for('project_page')}}"><img class="d-block w-100 image" src="{{url_for('static', filename='images/more_projects.jpg')}}" alt="more-projects-img"></a>
-        <span class="project-text"><p>Click image to see a list of all current projects.</p></span>
-    </div>
+        <div class="project-text"><p>Click image to see a list of all current projects.</p></div>
+  </div>
   </div>
   <a class="carousel-control-prev" href="#projects-carousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
